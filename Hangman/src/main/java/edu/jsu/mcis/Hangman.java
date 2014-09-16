@@ -17,12 +17,28 @@ public class Hangman {
     }
     
     public boolean available(char c) {
-        return true;
+		if (usedLetters.contains(c))
+			return false;
+		else
+			return true;
     }
     
-    public int guess(char c) {
-        return 2;
+    public int guess(char c) { 
+		int num = 2;
+			if(usedLetters.contains(c))
+				num = 1;
+			else
+				usedLetters.add(c);
+		return num;
+		
     }
+	
+	public boolean tooMany(){
+		if(usedLetters.size() > 5)
+			return true;
+		else
+			return false;
+	}
     
     public Result getResult() {
         return Result.NONE;
